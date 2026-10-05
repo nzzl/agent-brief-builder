@@ -21,7 +21,6 @@
 }
 
 html {
-  min-width: 320px;
   background: var(--page);
 }
 
@@ -52,7 +51,7 @@ a {
 .site-header,
 main,
 footer {
-  width: min(100% - 40px, 1160px);
+  width: min(calc(100% - 40px), 1160px);
   margin-inline: auto;
 }
 
@@ -247,7 +246,7 @@ textarea {
 }
 
 textarea::placeholder {
-  color: #969b95;
+  color: var(--muted);
 }
 
 textarea:hover {
@@ -331,7 +330,7 @@ footer p {
   .site-header,
   main,
   footer {
-    width: min(100% - 24px, 1160px);
+    width: min(calc(100% - 24px), 1160px);
   }
 
   .site-header {
