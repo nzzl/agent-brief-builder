@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Turn rough coding task notes into a clear, copyable brief for a coding agent."
+    >
+    <meta name="theme-color" content="#f4f2ec">
+    <title>Agent Brief Builder</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="https://prommer.net">prommer.net</a>
+      <span class="header-label">Agent Brief Builder</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">A small tool for clearer handoffs</p>
+        <h1 id="page-title">Turn rough task notes into a clear coding brief.</h1>
+        <p class="intro-copy">
+          Give your agent the context it needs, without adding anything you did not say.
+        </p>
+      </section>
+
+      <div class="workspace">
+        <section class="panel form-panel" aria-labelledby="form-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="step-label">01 / Input</p>
+              <h2 id="form-heading">Describe the task</h2>
+            </div>
+            <button class="button button-secondary" id="load-example" type="button">
+              Load example
+            </button>
+          </div>
+
+          <p class="panel-note" id="form-guidance">
+            Use as much or as little as you have. Empty sections are omitted.
+          </p>
+
+          <form id="brief-form" aria-describedby="form-guidance">
+            <div class="field">
+              <div class="field-heading">
+                <label for="goal">Goal</label>
+                <span>What should change?</span>
+              </div>
+              <textarea
+                id="goal"
+                name="goal"
+                rows="3"
+                placeholder="e.g. Add a copy-link action to each issue card"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="context">Context</label>
+                <span>Where does the work live?</span>
+              </div>
+              <textarea
+                id="context"
+                name="context"
+                rows="4"
+                placeholder="Relevant code, current behavior, or background"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="acceptance">Acceptance criteria</label>
+                <span>What must be true when done?</span>
+              </div>
+              <textarea
+                id="acceptance"
+                name="acceptance"
+                rows="4"
+                placeholder="Observable outcomes, one per line if useful"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="constraints">Constraints</label>
+                <span>What must stay within bounds?</span>
+              </div>
+              <textarea
+                id="constraints"
+                name="constraints"
+                rows="4"
+                placeholder="Dependencies, scope limits, or things to preserve"
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="verification">Verification</label>
+                <span>How should it be checked?</span>
+              </div>
+              <textarea
+                id="verification"
+                name="verification"
+                rows="4"
+                placeholder="Tests, commands, or manual checks"
+              ></textarea>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel preview-panel" aria-labelledby="preview-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="step-label">02 / Output</p>
+              <h2 id="preview-heading">Agent brief</h2>
+            </div>
+            <button class="button button-primary" id="copy-prompt" type="button" disabled>
+              Copy prompt
+            </button>
+          </div>
+
+          <p class="panel-note" id="preview-guidance">
+            Ready for Claude Code, Codex, or another coding agent.
+          </p>
+
+          <pre
+            class="prompt-output is-empty"
+            id="prompt-output"
+            aria-describedby="preview-guidance"
+            tabindex="0"
+          >Your brief will appear here as you add task details.</pre>
+          <p class="status" id="copy-status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>No sign-in, model calls, or saved data. Everything runs in your browser.</p>
+    </footer>
+  </body>
+</html>
